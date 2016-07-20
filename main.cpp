@@ -54,6 +54,10 @@ int main() {
     string b(1,a);
 
     cout<<b<<endl;
+
+
+
+
     return 1;
 }
 

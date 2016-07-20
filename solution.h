@@ -26,14 +26,14 @@ public:
     //20. Valid Parentheses
     bool isValid(string s);
 
-    //20 transformed fidessa OA 7 FT
+    //20. transformed fidessa OA 7 FT
     bool isValid2(string s);
     int MatchingPair(string s);
 
     // meeting room II transformed for flights
     int miniGates(int arr[],int dep[],int flights);
 
-    // fidessa find pair char
+    // Fidessa find pair char
     char pairchar(string s);
 };
 
