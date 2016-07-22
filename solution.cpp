@@ -18,7 +18,7 @@ char Solution::pairchar(string s) {
             return (char)i;
         }
     }
-    return NULL;
+    return '\0';
 }
 int Solution::miniGates(int *arr, int *dep, int flights) {
     int i = 0;
@@ -49,7 +49,7 @@ int Solution::miniGates(int *arr, int *dep, int flights) {
 }
 int Solution::MatchingPair(string s){
     int n = s.length();
-    if(n<2 || (n%2) ==1 ){
+    if(n<2){
         return -1;
     }
     int i = 0;
@@ -58,28 +58,29 @@ int Solution::MatchingPair(string s){
     char cur;
     int id = 0;
     for(i=0;i<n;i++) {
+        // start with capital or followed by captial
         if(s[i]>='A' && s[i]<= 'Z'){
             cnt.push_back(s[i]);
         }else {
+            // if upcase followed by lowercase, must match or return -1
             if (cnt.empty() == true) {
                 return false;
             }
             cur = cnt.back();
             cnt.pop_back();
+            //have no match pair right. must have one!
             if((int)(cur-'A') == (int)(s[i]-'a')){
-                if(id == 0){
-                    id = i;
-                }
+                id = i;
                 continue;
+            }else {
+                // if the first letter comes not pair, return -1
+                if (id == 0) {
+                    return -1;
+                }
             }
-            return -1;
         }
     }
-    if(cnt.empty()){
-        return id;
-    }else{
-        return -1;
-    }
+    return id;
 }
 bool Solution::isValid2(string s) {
     int n = s.length();
@@ -197,4 +198,4 @@ void Solution::moveZeroes(vector<int>& nums) {
         }
     }
 }
-void Solution::test(int i) { std::cout<<i<<std::endl;}
+void Solution::test(int i) { cout<<i<<endl;}
