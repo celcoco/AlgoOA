@@ -11,6 +11,8 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include <math.h>
+#include <sstream>
 using namespace std;
 class Solution{
 public:
@@ -35,6 +37,25 @@ public:
 
     // Fidessa find pair char
     char pairchar(string s);
+
+    // Akuna Quant Dev OA
+    bool Akuna_t1(int d);
+
+    float Akuna_t2(float data[],int n);
+
+    int** Akuna_t3(int** mat,int n,int m);
+    vector<vector<int>> Akuna_t3_2(vector<vector<int>> mat,int n,int m);
+
+    int Akuna_t4(string str);
+
+    float Akuna_t5(int n);
+
+    string Akuna_t6(string str);
+
+    int PilNum(int year);
+    void UniWordCnt(void);
+    void LowestDist(void);
+
 };
 
 
