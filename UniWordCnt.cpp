@@ -33,45 +33,50 @@ public:
         test();
     }
     void test() {
-        string str;
-        string word;
-        char letter;
-        map<string, int> wordlist;
-        int letterlist[26];
-        map<string, int>::iterator wordit;
-        for (int i = 0; i < 26; i++) {
-            letterlist[i] = 0;
+        string str1;
+        map<string,int> wordcnt;
+        map<char,int> lettercnt;
+        for(int i = 0; i < 26; i++){
+            char c = (char)(i+'a');
+            lettercnt[c] = 0;
         }
-        //getline(cin, str);
-        int wordcnt = 0;
-        int id = 0;
-        while (strlist.size() != id) {
-            str = strlist[id];
-            stringstream sstr(str);
-            while (getline(sstr, word, ' ')) {
-                wordit = wordlist.find(word);
-                if (wordit == wordlist.end()) {
-                    map<string, int>::value_type vt = {word,0};
-                    wordlist.insert(vt);
+        while(strlist.size() != 0){
+            str1 = strlist.back();
+            strlist.pop_back();
+            //if(str1 == "") break;
+            stringstream sstr1(str1);
+            string word;
+            while(getline(sstr1,word,' ')){
+                bool isWord = false;
+                for(auto& w : word){
+                    if(w >= 'a' && w <= 'z'){
+                        isWord = true;
+                    }else{
+                        if(w > 'z' || w < 'A' || (w < 'a' && w > 'Z')){
+                            isWord = false;
+                            break;
+                        }
+                    }
                 }
-                wordlist[word]++;
-                wordcnt++;
-                for (int i = 0; i < word.length(); i++) {
-                    letter = word[i];
-                    int asc = letter - 'a' - 0;
-                    letterlist[asc]++;
+                if(!isWord) continue;
+                if(wordcnt.find(word) != wordcnt.end()){
+                    wordcnt[word]++;
+                }else{
+                    wordcnt[word] = 1;
+                }
+                for(auto& l : word){
+                    if(l > 'z' || l < 'a') continue;
+                    lettercnt[l] ++;
                 }
             }
-            //getline(cin, str);
-            id ++;
         }
-        cout << wordcnt << endl << "words" << endl;
-        for (wordit = wordlist.begin(); wordit != wordlist.end(); wordit++) {
-            cout << wordit->first << " " << wordit->second << endl;
+        cout << wordcnt.size() << endl << "words" << endl;
+        for(auto& i : wordcnt){
+            cout << i.first << " " << i.second << endl;
         }
         cout << "letters" << endl;
-        for (int i = 0; i < 26; i++) {
-            cout << (char) (i + 'a') << " " << letterlist[i] << endl;
+        for(auto& i : lettercnt){
+            cout << i.first << " " << i.second << endl;
         }
     }
 };

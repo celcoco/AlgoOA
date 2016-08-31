@@ -3,12 +3,12 @@
 //
 #include "TestPlat.h"
 
-class PilNum : public SlnBase{
+class PalindromeDate : public SlnBase{
 public:
     int y;
     int NumOfPilYear;
     void PrintDesc(){
-        cout << "Cal the number of pil year in the centry" << endl;
+        cout << "Cal the number of Palindrome dates in the centry" << endl;
     }
     void InputLocal(){
         y = 2016;
@@ -51,7 +51,7 @@ public:
             mon = l1;
             day = l2*10+l3;
             if(mon>=1 && mon<=12){
-                if(day>=0 && day<=monthlen[mon-1]) {
+                if(day>=1 && day<=monthlen[mon-1]) {
                     pilnum++;
                     printf("[%2d]7:%2d%02d%4d\n",pilnum,mon,day,i);
                 }
@@ -60,7 +60,7 @@ public:
             mon = l1*10+l2;
             day = l3*10+l4;
             if(mon>=1 && mon<=12){
-                if(day>=0 && day<=monthlen[mon-1]) {
+                if(day>=1 && day<=monthlen[mon-1]) {
                     pilnum++;
                     printf("[%2d]8:%02d%02d%4d\n",pilnum,mon,day,i);
                 }
@@ -69,4 +69,4 @@ public:
         return pilnum;
     }
 };
-const bool reg1 = TestPlat::reg<PilNum>("PilNum");
+const bool reg1 = TestPlat::reg<PalindromeDate>("PalindromeDate Num");

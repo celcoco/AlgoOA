@@ -6,6 +6,7 @@
 #define ALGOOA_TESTPLAT_H
 
 #include <map>
+#include <set>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -18,7 +19,7 @@ using namespace std;
 
 typedef std::map<std::string, SlnBase*(*)()> SlnListType;
 typedef SlnListType::iterator SlnListItType;
-typedef SlnListType::value_type SlnListValueType;
+//typedef SlnListType::value_type SlnListValueType;
 class TestPlat{
 public:
     TestPlat(){};
@@ -34,7 +35,7 @@ public:
     static SlnListType SlnList;
 
     void SelectMenu();
-
+    void run();
     // register the derived class
     template <typename T> static bool reg(std::string str){
         TestPlat::SlnList[str] = &TestPlat::CreateObj<T>;
@@ -46,10 +47,12 @@ public:
     };
 
     // for static test
+    /*
     static int t;
     static void sett(int i){
         TestPlat::t = i;
     }
+     */
 
 };
 
